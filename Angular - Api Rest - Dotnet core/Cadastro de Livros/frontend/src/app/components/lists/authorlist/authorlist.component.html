@@ -1,0 +1,20 @@
+<h2>Listagem de Autor</h2>
+
+<button class="btn btn-primary float-end" routerLink="/author"><i class="bi bi-plus-circle"></i> Novo</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of autor">
+            <td>{{item.authorId}}</td>
+            <td>{{item.name}}</td>
+            <td><button class="btn btn-secondary btn-sm" (click)="update(item.authorId)"><i class="bi bi-pencil"></i> Editar</button></td>
+            <td><button class="btn btn-outline-danger btn-sm"  (click)="delete(item.authorId)"><i class="bi bi-trash3"></i> Excluir</button></td>
+        </tr>
+    </tbody>
+</table>

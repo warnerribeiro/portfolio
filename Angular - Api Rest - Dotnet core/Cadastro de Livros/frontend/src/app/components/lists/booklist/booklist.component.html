@@ -1,0 +1,26 @@
+<h2>Listagem de Livros</h2>
+
+<button class="btn btn-primary float-end" routerLink="/book"><i class="bi bi-plus-circle"></i> Novo</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Título</th>
+            <th scope="col">Editora</th>
+            <th scope="col">Edição</th>
+            <th scope="col">Ano de Publicação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of livro">
+            <td>{{item.bookId}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.publisher}}</td>
+            <td>{{item.edition}}</td>
+            <td>{{item.yearOfPublication}}</td>
+            <td><button class="btn btn-secondary btn-sm"  (click)="update(item.bookId)"><i class="bi bi-pencil"></i> Editar</button></td>
+            <td><button class="btn btn-outline-danger btn-sm" (click)="delete(item.bookId)"><i class="bi bi-trash3"></i> Excluir</button></td>
+        </tr>
+    </tbody>
+</table>

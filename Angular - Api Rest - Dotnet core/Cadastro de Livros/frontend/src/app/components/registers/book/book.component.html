@@ -1,0 +1,243 @@
+<form [formGroup]="form">
+  <div class="col-md-12">
+    <div class="form-group">
+      <div class="row">
+        <h2>Cadastro de Livro</h2>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <button
+              class="btn btn-primary float-end"
+              (click)="onSubmit()"
+              [disabled]="!form.valid"
+            >
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="title" class="form-label">Título:</label>
+            <input
+              name="title"
+              type="text"
+              class="form-control"
+              id="title"
+              placeholder="ex: Arquiteura Limpa"
+              required
+              formControlName="title"
+              maxlength="40"
+            />
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.title?.errors?.['required'] || !form?.controls?.title?.valid) && (form?.controls?.title?.dirty || form?.controls?.title?.touched)"
+          >
+            O campo deve ser preenchido!
+          </small>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="publisher" class="form-label">Editora:</label>
+            <input
+              name="publisher"
+              type="text"
+              class="form-control"
+              id="publisher"
+              placeholder="ex: Saraiva"
+              required
+              formControlName="publisher"
+              maxlength="40"
+            />
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.publisher?.errors?.['required'] || !form?.controls?.publisher?.valid) && (form?.controls?.publisher?.dirty || form?.controls?.publisher?.touched)"
+          >
+            O campo deve ser preenchido!
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="edition" class="form-label">Edição:</label>
+            <input
+              name="edition"
+              type="number"
+              class="form-control"
+              id="edition"
+              placeholder="ex: 1"
+              required
+              formControlName="edition"
+              max="2147483647"
+            />
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.edition?.errors?.['required'] || !form?.controls?.edition?.valid) && (form?.controls?.edition?.dirty || form?.controls?.edition?.touched)"
+          >
+            O campo deve ser preenchido!
+          </small>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="yearOfPublication" class="form-label"
+              >Ano de Publicação:</label
+            >
+            <input
+              name="yearOfPublication"
+              type="text"
+              class="form-control"
+              id="yearOfPublication"
+              placeholder="ex: 2015"
+              required
+              formControlName="yearOfPublication"
+              minlength="4"
+              maxlength="4"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+            />
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.yearOfPublication?.errors?.['required'] || !form?.controls?.yearOfPublication?.valid) && (form?.controls?.yearOfPublication?.dirty || form?.controls?.yearOfPublication?.touched)"
+          >
+            O campo deve ser corretamente!
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="author" class="form-label">Autor:</label>
+            <select
+              name="author"
+              class="form-select"
+              id="author"
+              aria-label="Default select example"
+              required
+              multiple
+              formControlName="bookAuthor"
+              placement="right"
+              ngbTooltip="Para selecionar mais de um autor, segure ctrl."
+            >
+              <option *ngFor="let item of autor" value="{{ item.authorId }}">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.bookAuthor?.errors?.['required'] || !form?.controls?.bookAuthor?.valid) && (form?.controls?.bookAuthor?.dirty || form?.controls?.bookAuthor?.touched)"
+          >
+            O campo deve ser preenchido!
+          </small>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="subject" class="form-label">Assunto:</label>
+            <select
+              name="subject"
+              class="form-select"
+              id="subject"
+              required
+              multiple
+              formControlName="bookSubject"
+              placement="right"
+              ngbTooltip="Para selecionar mais de um assunto, segure ctrl."
+            >
+              <option *ngFor="let item of assunto" value="{{ item.subjectId }}">
+                {{ item.description }}
+              </option>
+            </select>
+          </div>
+          <small
+            class="m-0 p-0"
+            *ngIf="(form?.controls?.bookSubject?.errors?.['required'] || !form?.controls?.bookSubject?.valid) && (form?.controls?.bookSubject?.dirty || form?.controls?.bookSubject?.touched)"
+          >
+            O campo deve ser preenchido!
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="origin" class="form-label">Local de Venda:</label>
+          <select
+            name="origin"
+            class="form-select"
+            id="origin"
+            formControlName="origin"
+          >
+            <option
+              *ngFor="let item of origin"
+              value="{{ item.originPurchaseId }}"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-5">
+          <label for="value" class="form-label">Valor:</label>
+          <div class="input-group">
+            <span class="input-group-text">R$</span>
+            <input
+              name="value"
+              type="text"
+              class="form-control"
+              id="title"
+              placeholder="ex: 10"
+              formControlName="value"
+              maxlength="40"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+            />
+          </div>
+        </div>
+        <div class="col-1 align-self-end">
+          <button
+            [disabled]="
+              !form.controls.value.value || !form.controls.origin.value
+            "
+            class="btn btn-primary"
+            placement="right"
+            ngbTooltip="Adicionar um valor do livro para um local de venda."
+            (click)="addOriginValue()"
+          >
+            <i class="bi bi-plus-circle-fill"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Local de Venda</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of bookvalue">
+                  <td>{{ item.originName }}</td>
+                  <td>R$ {{ item.value }}</td>
+                  <td>
+                    <button
+                      class="btn btn-outline-danger btn-sm"
+                      (click)="removeOriginValue(item.originPurchaseId)"
+                    >
+                      <i class="bi bi-trash3"></i> Excluir
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

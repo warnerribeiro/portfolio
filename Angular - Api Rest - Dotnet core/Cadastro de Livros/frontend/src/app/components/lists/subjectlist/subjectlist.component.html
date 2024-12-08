@@ -1,0 +1,20 @@
+<h2>Listagem de Assunto</h2>
+
+<button class="btn btn-primary float-end" routerLink="/subject"><i class="bi bi-plus-circle"></i> Novo</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of assuntos">
+            <td>{{item.subjectId}}</td>
+            <td>{{item.description}}</td>
+            <td><button class="btn btn-secondary btn-sm" (click)="update(item)"><i class="bi bi-pencil"></i> Editar</button></td>
+            <td><button class="btn btn-outline-danger btn-sm" (click)="delete(item)"><i class="bi bi-trash3"></i> Excluir</button></td>
+        </tr>
+    </tbody>
+</table>

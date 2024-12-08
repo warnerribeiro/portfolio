@@ -1,0 +1,21 @@
+@Backend_HostAddress = http://localhost:5172
+
+GET {{Backend_HostAddress}}/api/Author/
+Accept: application/json
+
+###
+
+GET {{Backend_HostAddress}}/api/Book/
+Accept: application/json
+
+###
+
+GET {{Backend_HostAddress}}/api/OriginPurchase/
+Accept: application/json
+
+###
+
+GET {{Backend_HostAddress}}/api/Subject/
+Accept: application/json
+
+###

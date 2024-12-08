@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="LivroDb">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=192.168.1.100,11433;Initial Catalog=LivroDb;Encrypt=False;TrustServerCertificate=False;ConnectRetryCount=0</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>51dccca6-f29d-429b-99a5-a5005ef036f4</DataSourceID>
+</RptDataSource>
